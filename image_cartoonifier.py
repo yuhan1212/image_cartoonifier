@@ -95,3 +95,33 @@ def cartoonify(image_path):
     print(save_button)
     print('end')
     plt.show()
+
+
+def save_button():
+global resize_cartoon, image_path
+save1=Button(window, text="Save cartoon image",command=lambda:\
+             save(resize_cartoon, image_path),padx=10,pady=10)
+save1.configure(background='#DB93A0', foreground='#17332D',font=('Ayuthaya',16,'bold'))
+save1.pack(side=TOP,pady=30)
+window.update()
+
+
+def save(resize_cartoon, image_path):   
+    # saving an image using imwrite()
+    original_name = (image_path.split('/')[-1]).split('.')[0]
+    new_name = "cartoonified_" + original_name
+    path1 = os.path.dirname(image_path)
+    extension = os.path.splitext(image_path)[1]
+    path = os.path.join(path1, new_name + extension)
+    cv2.imwrite(path, cv2.cvtColor(resize_cartoon, cv2.COLOR_RGB2BGR))
+    I = "Image saved by name " + new_name +" at "+ path
+    tk.messagebox.showinfo(title=None, message=I)
+
+
+''' Cartoonify button '''
+upload = Button(window, text="Cartoonify Your Photo",command=upload,padx=10,pady=10)
+upload.configure(background='#DB93A0', foreground='#17332D',font=('Ayuthaya',16,'bold'))
+upload.pack(side=TOP,pady=30)
+
+
+window.mainloop()
