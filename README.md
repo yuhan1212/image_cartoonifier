@@ -1,6 +1,6 @@
 # Image Cartoonifier
 
-This program will Read file path and image then transform image into cartoon style and save.
+This program will read file path and image then transform image into cartoon style and save.
 
 
 ### Features
